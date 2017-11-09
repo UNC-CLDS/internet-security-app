@@ -118,7 +118,7 @@ function checkForUpdates() {
 
 						} else { //If we need a new PID
 							var PID = ""
-							while (PID.length < 9) {
+							while (PID === null || PID.length < 9) {
 								PID = prompt("Please enter your PID");
 							}
 							var data = {
@@ -178,9 +178,13 @@ function programDialog() {
 
 	// return program
 	var program = '';
-	while (program !== 'BSBA' && program !== 'bsba'
-		&& program !== 'MBA' && program !== 'mba'
-		&& program !== 'MAC' && program !== 'mac') {
+	while (
+		program === null || (
+			program !== 'BSBA' && program !== 'bsba'
+			&& program !== 'MBA' && program !== 'mba'
+			&& program !== 'MAC' && program !== 'mac'
+		)
+	) {
 		program = prompt("Your Program (BSBA or MBA or MAC)")
 	}
 	return program.toUpperCase()
@@ -188,7 +192,7 @@ function programDialog() {
 
 function classyearDialog() {
 	var classyear = '';
-	while (classyear.length < 4) {
+	while (classyear === null || classyear.length < 4) {
 		classyear = prompt("Your Class Year");
 	}
 	return parseInt(classyear)
@@ -214,9 +218,13 @@ function genderDialog() {
 
 	// return gender
 	var gender = 'none';
-	while (gender !== 'M' && gender !== 'm'
-		&& gender !== 'F' && gender !== 'f'
-		&& gender !== '') {
+	while (
+		gender === null || (
+			gender !== 'M' && gender !== 'm'
+			&& gender !== 'F' && gender !== 'f'
+			&& gender !== ''
+		)
+	) {
 		gender = prompt("Optional: gender (F or M or leave blank)");
 	}
 	return gender == '' ? 'blank' : gender.toUpperCase();
@@ -247,7 +255,7 @@ function ageDialog() {
 
 	// return age;
 	var age = 0;
-	while (age !== 1 && age !== 2 && age !== 3) {
+	while (age === null || (age !== 1 && age !== 2 && age !== 3)) {
 		age = parseInt(prompt("Enter age group as: 1 (if <18), 2 (if 18-22), 3 (if >22)"))
 	}
 	return age;
@@ -273,8 +281,12 @@ function englishDialog() {
 
 	// return english
 	var english = '';
-	while (english !== 'Y' && english !== 'y'
-		&& english !== 'N' && english !== 'n') {
+	while (
+		english === null || (
+			english !== 'Y' && english !== 'y'
+			&& english !== 'N' && english !== 'n'
+		)
+	) {
 		english = prompt("Native English speaker? (Y or N)");
 	}
 	return english.toUpperCase();
